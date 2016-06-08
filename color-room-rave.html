@@ -36,15 +36,20 @@
       // Position
       var x = 0, y = 0, z = 0;
 
-      // Timer
-      window.setInterval(function() {
-        a = 'color';
-        sky.attr(a, randomColor());
-        ceiling.attr(a, randomColor());
-        floor.attr(a, randomColor());
-        wallz0.attr(a, randomColor());
-        wallzpos.attr(a, randomColor());
-      }, 100);
+      // Queue color hell with music after delay
+      window.setTimeout(run, 9700);
+
+      // Run color hell
+      function run() {
+        window.setInterval(function() {
+          a = 'color';
+          sky.attr(a, randomColor());
+          ceiling.attr(a, randomColor());
+          floor.attr(a, randomColor());
+          wallz0.attr(a, randomColor());
+          wallzpos.attr(a, randomColor());
+        }, 100);
+      }
 
       // Function to return random color
       function randomColor() {

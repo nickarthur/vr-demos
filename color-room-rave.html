@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Color Room</title>
+    <meta name="description" content="VR Color Room">
+    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <audio id="sound" src="dont-know-trance.mp3" autoplay="true" loop="true">
+      </a-assets>
+      <!-- Sound -->
+      <a-entity sound="src: dont-know-trance.mp3"></a-entity>
+      <!-- Walls -->
+      <a-box id="wall-z-0" rotation="0 0 0" position="0 0 0" width="20" height="20" depth="2" color="#DDD"></a-box>
+      <a-box id="wall-z-pos" rotation="0 0 0" position="0 0 20" width="20" height="20" depth="20" color="#DDD"></a-box>
+      <!-- Floor -->
+      <a-box id="floor" rotation="90 0 0" position="0 0 0" width="20" height="20" depth="2" color="#FFF"></a-box>
+      <!-- Ceiling -->
+      <a-box id="ceiling" rotation="90 0 0" position="0 20 0" width="20" height="20" depth="20" color="#FFF"></a-box>
+      <!-- Sky -->
+      <a-sky id="sky" color="#EEE"></a-sky>
+
+    </a-scene>
+    <script>
+    $(function() {
+      // Elements
+      var sky = $("#sky"), ceiling = $("#ceiling"), floor = $("#floor"), wallz0 = $("#wall-z-0"), wallzpos = $("#wall-z-pos");
+      // Dimensions
+      var depth = 0, height = 0, width = 0;
+      // Rotation
+      var roll = 0, pitch = 0, yaw = 0;
+      // Position
+      var x = 0, y = 0, z = 0;
+
+      // Timer
+      window.setInterval(function() {
+        a = 'color';
+        sky.attr(a, randomColor());
+        ceiling.attr(a, randomColor());
+        floor.attr(a, randomColor());
+        wallz0.attr(a, randomColor());
+        wallzpos.attr(a, randomColor());
+      }, 100);
+
+      // Function to return random color
+      function randomColor() {
+        length = 6;
+        chars = '0123456789ABCDEF';
+        hex = '#';
+        while(length--) hex += chars[(Math.random() * 16) | 0];
+        return hex;
+      }
+
+    });
+    </script>
+  </body>
+</html>
